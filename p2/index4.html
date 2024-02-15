@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <script>
+        async function searchUsers() {
+            let url = 'https://jsonplaceholder.typicode.com/users';
+            let response = await fetch(url);
+            if (response.ok) {
+                let json = await response.json();
+                alert("Trouvé");
+                console.log(json);
+            } else {
+                alert("PB de connexion");
+                console.log('Error: ' + response.status);
+            }
+        }
+        searchUsers();
+    </script>
+</body>
+</html>

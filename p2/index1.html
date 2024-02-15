@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <script>
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
+            script.src = src;
+            script.onload = () => callback(script);
+            document.head.append(script);
+        }
+        loadScript('script.js', function() {
+            myFunction();
+        });
+    </script>
+</body>
+</html>

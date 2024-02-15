@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <script>
+        async function searchUser(nom) {
+            let url = 'https://jsonplaceholder.typicode.com/users?username=' + nom;
+            let response = await fetch(url);
+            if (response.ok) {
+                let json = await response.json();
+                console.log(json);
+                for (let attr in json[0]) {
+                    let elem = document.createElement('div');
+                    if (attr === 'company') {
+                        elem.innerHTML += attr + ' : ' + json[0][attr].name;
+                    } else if (attr === 'address') {
+                        elem.innerHTML += attr + ' : ' + json[0][attr].street + ', ' + json[0][attr].suite + ', ' + json[0][attr].city + ', ' + json[0][attr].zipcode;
+                    } else {
+                        elem.innerHTML += attr + ' : ' + json[0][attr];
+                    }
+                    document.body.appendChild(elem);
+                }
+                return json;
+            } else {
+                alert("PB de connexion");
+                console.log('Error: ' + response.status);
+            }
+        }
+        async function printUser(json) {
+            for (let attr in json[0]) {
+                let elem = document.createElement('div');
+                if (attr === 'company') {
+                    elem.innerHTML += attr + ' : ' + json[0][attr].name;
+                } else if (attr === 'address') {
+                    elem.innerHTML += attr + ' : ' + json[0][attr].street + ', ' + json[0][attr].suite + ', ' + json[0][attr].city + ', ' + json[0][attr].zipcode;
+                } else {
+                    elem.innerHTML += attr + ' : ' + json[0][attr];
+                }
+                document.body.appendChild(elem);
+            }
+        }
+        let sam = searchUser("Samantha");
+        searchUser("Bret");
+        // searchUser("Antonette");
+        // searchUser("Karianne");
+        // searchUser("Kamren");
+        // searchUser("Leopoldo_Corkery");
+        // searchUser("Elwyn.Skiles");
+        // searchUser("Maxime_Nienow");
+        // searchUser("Delphine");
+        // searchUser("Moriah.Stanton");
+        printUser(sam);
+        </script>
+</body>
+</html>

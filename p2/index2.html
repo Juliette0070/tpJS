@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <script>
+        function makeRandom() {
+            return new Promise((resolve, reject) => {
+                console.log('Debut promesse');
+                setTimeout(() => {
+                    let random = Math.random();
+                    if (random > 0.5) {
+                        resolve("Reussite");
+                    } else {
+                        reject("Echec");
+                    }
+                }, 3000);
+            });
+        }
+        const myPromesse = makeRandom();
+        console.log(myPromesse);
+        myPromesse.then(
+            (result) => console.log(result),
+            (error) => console.log(error)
+        );
+    </script>
+</body>
+</html>
