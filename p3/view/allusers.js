@@ -21,7 +21,7 @@ export default class UserAll{
             <h2>Tous les users:</h2>
             <ul>
                 ${users.map(user => /* html */`
-                    <li><strong>${user.name}</strong>, email: ${user.email}</li>
+                    <li><strong><a href="/p3/fetch.html#/users/${user.id}">${user.name}</a></strong>, email: ${user.email}</li>
                 `).join('')}
             </ul>
         `;

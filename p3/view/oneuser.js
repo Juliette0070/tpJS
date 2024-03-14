@@ -9,19 +9,27 @@ export default class UserOne{
         myList.appendChild(document.createElement("li")).textContent = user.email;
         myList.appendChild(document.createElement("li")).textContent = user.phone;
         myList.appendChild(document.createElement("li")).textContent = user.website;
-        myList.appendChild(document.createElement("li")).textContent = "company:";
-        let company = document.createElement("ul");
-        company.appendChild(document.createElement("li")).textContent = user.company.name;
-        company.appendChild(document.createElement("li")).textContent = user.company.catchPhrase;
-        company.appendChild(document.createElement("li")).textContent = user.company.bs;
-        myList.appendChild(company);
-        myList.appendChild(document.createElement("li")).textContent = "address:";
-        let address = document.createElement("ul");
-        address.appendChild(document.createElement("li")).textContent = user.address.street;
-        address.appendChild(document.createElement("li")).textContent = user.address.suite;
-        address.appendChild(document.createElement("li")).textContent = user.address.city;
-        address.appendChild(document.createElement("li")).textContent = user.address.zipcode;
-        myList.appendChild(address);
-        return myList;
+        if (user.company) {
+            myList.appendChild(document.createElement("li")).textContent = "company:";
+            let company = document.createElement("ul");
+            company.appendChild(document.createElement("li")).textContent = user.company.name;
+            company.appendChild(document.createElement("li")).textContent = user.company.catchPhrase;
+            company.appendChild(document.createElement("li")).textContent = user.company.bs;
+            myList.appendChild(company);
+        }
+        if (user.address) {
+            myList.appendChild(document.createElement("li")).textContent = "address:";
+            let address = document.createElement("ul");
+            address.appendChild(document.createElement("li")).textContent = user.address.street;
+            address.appendChild(document.createElement("li")).textContent = user.address.suite;
+            address.appendChild(document.createElement("li")).textContent = user.address.city;
+            address.appendChild(document.createElement("li")).textContent = user.address.zipcode;
+            myList.appendChild(address);
+        }
+        let view = /* html*/`
+            <h2>User:</h2>
+            ${myList.outerHTML}
+        `;
+        return view;
     }
 }
