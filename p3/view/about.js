@@ -1,7 +1,9 @@
 export default class About{
-    async render2(){
+    async render(){
         return /* html */`
         <section class="section">
-            <h1>Information</h1>`
+            <h1>Information</h1>
+        </section>
+        `
     }
 }

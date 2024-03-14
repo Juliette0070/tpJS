@@ -1,18 +1,14 @@
 import UserAll from "./view/allusers.js";
 import UserOne from "./view/oneuser.js";
 import Error404 from "./view/Error404.js";
-// import About from "./view/about.js";
+import About from "./view/about.js";
 import Utils from "./services/utils.js";
 
 const routes = {
-    // '/about': About,
+    '/about': About,
     '/users': UserAll,
     '/users/:id': UserOne,
 };
-
-// let userall = new UserAll();
-// window.addEventListener('load', userall.render("ul"))
-// window.addEventListener('load', userall.render2())
 
 const router = async () => {
     const content = document.querySelector("#content");
@@ -20,7 +16,7 @@ const router = async () => {
     let parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.id ? '/:id' : '') + (request.verb ? `/${request.verb}` : '');
     let page = routes[parsedURL] ? new routes[parsedURL] : Error404;
     console.log(page);
-    content.innerHTML = await page.render2();
+    content.innerHTML = await page.render();
 }
 
 window.addEventListener('hashchange', router);
