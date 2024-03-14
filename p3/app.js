@@ -11,7 +11,7 @@ const routes = {
 };
 
 const router = async () => {
-    const content = document.querySelector("#content");
+    let content = document.querySelector("#content");
     let request = Utils.parseRequestURL();
     let parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.id ? '/:id' : '') + (request.verb ? `/${request.verb}` : '');
     let page = routes[parsedURL] ? new routes[parsedURL] : Error404;

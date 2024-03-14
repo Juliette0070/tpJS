@@ -25,7 +25,6 @@ export default class UserAll{
                 `).join('')}
             </ul>
         `;
-        let content = document.querySelector("#content");
-        content.innerHTML = view;
+        return view;
     }
 }
